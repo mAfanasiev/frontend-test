@@ -1,0 +1,473 @@
+.form {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 320px;
+  padding: 30px 15px;
+  
+  &__title {
+    width: 100%;
+    font-size: 20px;
+    line-height: 26px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &__cards {
+    width: 100%;
+    line-height: 0;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+
+  &__field {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+
+    &--date {
+      width: calc(60% - 10px);
+    }
+    &--cvv {
+      width: calc(40% - 10px);
+    }
+    &--code {
+      margin-bottom: 0;
+    }
+  
+    &-title {
+      width: 100%;
+      color: #444444;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    &-label {
+      width: 100%;
+      height: 32px;
+      position: relative;
+      &[for=firstName], &[for=lastName] {
+        width: calc(50% - 10px);
+      }
+      &[for=day] {
+        width: calc(50% - 18px);
+      }
+      &[for=year] {
+        width: calc(50% - 3px);
+      }
+
+      &[for=firstName], &[for=day] {
+        & .error-message {
+          left: 0;
+          transform: translateX(0%);
+          &::before, &::after {
+            left: 20px;
+          }
+        }
+      }
+
+      &[for=lastName], &[for=cvv] {
+        & .error-message {
+          left: auto;
+          right: 0;
+          transform: translateX(0%);
+          &::before, &::after {
+            left: auto;
+            right: 20px;
+          }
+        }
+      }
+    }
+
+    &-input {
+      width: 100%;
+      height: 100%;
+      box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+      border: 1px solid #cccccc;
+      background-color: #ffffff;
+      padding-left: 10px;
+      padding-right: 10px;
+      color: #888888;
+      line-height: 14px;
+      &::-webkit-input-placeholder {
+        color: #888888;
+      }
+      &::-moz-placeholder {
+        color: #888888;
+      }
+      &:-ms-input-placeholder {
+        color: #888888;
+      }
+      &:-moz-placeholder {
+        color: #888888;
+      }
+    }
+
+    &-line {
+      color: #444444;
+      margin-left: 8px;
+      margin-right: 9px;
+    }
+
+    &-cvv {
+      position: relative;
+      &.active {
+        .form__help {
+          display: flex;
+        }
+      }
+    }
+
+    &-tips {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    
+  }
+
+  &__help {
+    position: absolute;
+    bottom: calc(100% + 4px);
+    right: -5px;
+    width: 287px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+    z-index: 10;
+    display: none;
+    justify-content: space-between;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      right: 10px;
+      border: 10px solid transparent;	
+      bottom: -20px;
+    }
+    &::before {
+      border-top: 10px solid #cccccc;      
+    }
+    &::after {
+      border-top: 10px solid #fff;
+      bottom: -19px;
+    }
+
+    &-item {
+      max-width: 108px;
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    &-title {
+      margin-top: 17px;
+    }
+
+    &-overlay {
+      opacity: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      pointer-events: none;
+      &.active {
+        opacity: 1;
+        pointer-events: visible;
+      }
+    }
+  }
+
+  
+
+  
+  
+  &__paypall {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    border: 1px solid #dddddd;
+    background-color: #f7f7f7;
+  }
+
+  &__btn {
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 12px;
+    padding-bottom: 13px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 700;
+    border-radius: 3px;
+    border: 1px solid #fd7722;
+    background-color: #ff9000;
+    cursor: pointer;
+  }
+
+  & .error-message {
+    position: absolute;
+    width: 200px;
+    padding: 10px 5px;
+    color: #ef5350;
+    font-size: 13px;
+    line-height: 17px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    border: 1px solid #ef5350;
+    border-radius: 5px;
+    background-color: #ffebee;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -45px;
+    z-index: 2;
+    & b {
+      font-weight: 700;
+    }
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: calc(50% - 8px);
+      border: 8px solid transparent;	
+      bottom: -22px;
+    }
+    &::before {
+      border-top: 14px solid #ef5350;      
+    }
+    &::after {
+      border-top: 14px solid #ffebee;
+      bottom: -21px;
+    }
+  }
+
+  & .error {
+    border: 1px solid #ef5350;
+  }
+}
+
+@media (min-width: 480px) {
+  .form {
+    max-width: 650px;
+
+    &__field {
+      &-label {
+        &[for=firstName], &[for=day], &[for=lastName], &[for=cvv] {
+          & .error-message {
+            left: 50%;
+            transform: translateX(-50%);
+            &::before, &::after {
+              right: auto;
+              left: calc(50% - 8px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .form {
+    max-width: 880px;
+    
+    &__title {
+      font-size: 24px;
+    }
+    &__inner {
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    &__cards {
+      width: calc(25% - 23px);
+      min-width: 162px;
+      min-height: 32px;
+      justify-content: space-between;
+      align-items: center;
+      &-img {
+        width: 37px;
+      }
+    }
+
+    &__field {
+      justify-content: center;
+      &--name {
+        width: 100%;
+        order: -2;
+      }
+      
+      &--cardNumber, &--date, &--code {
+        width: calc(50% - 30px);
+        margin-right: 15px;
+      }
+      &--cardNumber {
+        order: -1;
+
+        & legend {
+          width: calc(50% - 8px);
+          min-width: 162px;
+        }
+      }
+      &--cvv {
+        width: calc(25% - 23px);
+        min-width: 162px;
+        & legend {
+          width: calc(50% - 18px);
+          min-width: auto;
+          margin-right: 14px;
+        }
+      }
+
+      &--code, &--date {
+        & legend {
+          width: calc(50% - 8px);
+          min-width: 162px;
+        }
+      }
+      &--code {
+        margin-right: calc(25% - 8px);
+      }
+
+      &-title {
+        margin-bottom: 0;
+        text-align: right;
+        width: calc(25% - 23px);
+        min-width: 162px;
+        margin-right: 15px;
+      }
+      &-label {
+        &[for=firstName], &[for=lastName] {
+          width: calc(25% - 23px);
+          min-width: 162px;
+        }
+        &[for=firstName] {
+          margin-right: 15px;
+        }
+        &[for=cardNumber], &[for=code] {
+          min-width: 162px;
+          width: calc(50% - 8px);
+        }
+        &[for=day] {
+          min-width: 64px;
+          width: calc(25% - 20px);
+        }
+        &[for=year] {
+          min-width: 77px;
+          width: calc(25% - 7px);
+        }
+        &[for=cvv] {
+          width: calc(50% + 4px);
+        }
+      }
+      &-line {
+        margin-left: 7px;
+        margin-right: 8px;
+      }
+    }
+
+    &__paypall, &__btn {
+      width: calc(50% - 30px);
+      min-width: 339px;
+      margin-left: calc(25% - 8px);
+    }
+    &__paypall {
+      padding: 15px;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .form {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    &__title {
+      font-size: 29px;
+    }
+    &__inner {
+      position: relative;
+      padding-right: 373px;
+      justify-content: flex-end;
+    }
+
+    &__field {
+      justify-content: flex-end;
+
+      &--name {
+        justify-content: flex-end;
+      }
+
+      &--cardNumber, &--date, &--code {
+        width: 300px;        
+        & legend {
+          width: auto;
+          min-width: auto;
+        }
+      }
+
+      &--code {
+        margin-right: auto;
+      }
+
+      &-title  {
+          min-width: auto;
+          width: auto;
+        }
+
+      &-label {
+        &[for=firstName], &[for=lastName], &[for=cardNumber], &[for=code] {
+          width: 162px;
+        }
+        &[for=day] {
+          width: 64px;
+        }
+        &[for=year] {
+          width: 77px;
+        }
+        &[for=cvv] {
+          width: 85px;
+        }
+      }
+    }
+
+    &__paypall {
+      position: absolute;
+      height: 100%;
+      width: 343px;
+      top: 0;
+      right: 0;
+      margin-top: 0;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 48px;
+      font-size: 18px;
+
+      &-img {
+        margin-top: 30px;
+      }
+    }
+  }
+}

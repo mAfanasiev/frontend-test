@@ -13,3 +13,47 @@ img {
 svg {
 	overflow: hidden;
 }
+
+.bold {
+	font-weight: 700;
+}
+.mobile__hid {
+	display: none;
+}
+select {
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-image: url("../img/select__arrow.svg");
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: 10px 10px;
+}
+select:focus {
+	outline: none;
+	outline-color:transparent;
+	outline-width: 0;
+}
+select::-ms-expand {
+	display: none;
+	background: none;
+	position: fixed;
+	border: none;
+	outline: none;
+}
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+select::-moz-focus-inner,
+option::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+	border: none;
+}
+
+@media (min-width: 768px) {
+	.mobile__hid {
+		display: inline;
+	}
+}
